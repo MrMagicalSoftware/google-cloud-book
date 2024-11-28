@@ -1,5 +1,7 @@
 # google-cloud-book
 
+
+<pre>
 1-  overview google-cloud
 2-  google cloud computing services
 3-  projects , service accounts , and billig
@@ -14,3 +16,4 @@
 12- Deploying storage in google cloud
 13- Loading Data into storage 
 14- Networking in the cloud : virtual private clouds and virtual private networks
+</pre>
