@@ -71,13 +71,13 @@ La scelta tra VMs, cluster gestiti o computing serverless, e tra diversi tipi di
 - Democratizzazione di tecnologie avanzate per sviluppatori e aziende senza risorse interne per ricerca e sviluppo.
 
 
+<br><br><br>
 
 
-_________________________°°°°°°°°°°°°°°°°°°°°°°°°°°°°°____________________________________________________________
+_____________________________________________________________________________________
 
 
 
-Ecco un test a scelta multipla basato sui contenuti finora discussi. Ogni domanda ha una sola risposta corretta.
 
 ---
 
