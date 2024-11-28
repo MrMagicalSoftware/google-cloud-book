@@ -203,4 +203,165 @@ Le API abilitate avranno un'opzione per disabilitarle. Puoi cliccare su questa o
 
 
 
+_______________________________________
+
+
+
+Domande a Risposta Multipla:
+
+    Cosa rappresenta un'Organizzazione in Google Cloud?
+        A) Un'istanza di una macchina virtuale.
+        B) La gerarchia principale per gestire le risorse e le politiche di accesso.
+        C) Un singolo progetto.
+        D) Un'API di Google Cloud.
+
+    Qual è la funzione principale di una Cartella in Google Cloud?
+        A) Organizzare i bilanci di fatturazione.
+        B) Gestire l'accesso a macchine virtuali.
+        C) Consentire la creazione di progetti.
+        D) Servire come un contenitore per progetti e altre cartelle.
+
+    Qual è la differenza tra un ruolo Predefinito e un ruolo Personalizzato?
+        A) I ruoli Predefiniti sono creati dall'amministratore, mentre i Personalizzati sono creati automaticamente da Google Cloud.
+        B) I ruoli Predefiniti sono più limitati rispetto ai ruoli Personalizzati.
+        C) I ruoli Predefiniti sono specifici per i servizi di Google Cloud e gestiti da Google, mentre i ruoli Personalizzati sono creati dagli amministratori.
+        D) I ruoli Personalizzati non possono essere assegnati a utenti.
+
+    Cos'è un Account di Servizio in Google Cloud?
+        A) Un utente con privilegi di amministratore.
+        B) Un tipo di account associato a risorse di calcolo.
+        C) Un'identità utilizzata dalle applicazioni o macchine virtuali per agire a nome di un utente.
+        D) Un account di fatturazione.
+
+    Qual è la funzione di un "Budget" in Google Cloud Billing?
+        A) Creare report di utilizzo delle risorse.
+        B) Gestire le politiche di accesso alle risorse.
+        C) Monitorare la spesa e impostare avvisi quando si raggiungono determinati limiti di spesa.
+        D) Creare account di servizio per i progetti.
+
+Domande True/False:
+
+    Le politiche di organizzazione in Google Cloud sono utilizzate per definire quali azioni possono essere eseguite sulle risorse in base a restrizioni.
+        True
+        False
+
+    Gli Account di Servizio Google gestiti da Google sono utilizzati principalmente per operazioni automatizzate da parte dei servizi di Google Cloud.
+        True
+        False
+
+    I ruoli "Owner" e "Editor" sono esempi di ruoli Predefiniti in Google Cloud.
+        True
+        False
+
+    Ogni progetto in Google Cloud deve avere un account di fatturazione associato, tranne se utilizza solo servizi gratuiti.
+        True
+        False
+
+    Le API di Google Cloud sono abilitate automaticamente quando un progetto viene creato.
+        True
+        False
+
+Domande a Risposta Breve:
+
+    Cos'è la "principale di privilegio minimo" e perché è importante in Google Cloud?
+
+    Descrivi la differenza tra un "Billing Account Creator" e un "Billing Account Viewer".
+
+    Come puoi gestire i costi di un progetto in Google Cloud?
+
+    Quali sono i due tipi principali di "Billing Accounts" in Google Cloud?
+
+    Come puoi esportare i dati di fatturazione in Google Cloud e per quali motivi potrebbe essere utile?
+
+
+
+Domande a Risposta Multipla:
+
+    Cosa rappresenta un'Organizzazione in Google Cloud?
+        B) La gerarchia principale per gestire le risorse e le politiche di accesso.
+
+    Qual è la funzione principale di una Cartella in Google Cloud?
+        D) Servire come un contenitore per progetti e altre cartelle.
+
+    Qual è la differenza tra un ruolo Predefinito e un ruolo Personalizzato?
+        C) I ruoli Predefiniti sono specifici per i servizi di Google Cloud e gestiti da Google, mentre i ruoli Personalizzati sono creati dagli amministratori.
+
+    Cos'è un Account di Servizio in Google Cloud?
+        C) Un'identità utilizzata dalle applicazioni o macchine virtuali per agire a nome di un utente.
+
+    Qual è la funzione di un "Budget" in Google Cloud Billing?
+        C) Monitorare la spesa e impostare avvisi quando si raggiungono determinati limiti di spesa.
+
+Domande True/False:
+
+    Le politiche di organizzazione in Google Cloud sono utilizzate per definire quali azioni possono essere eseguite sulle risorse in base a restrizioni.
+        True
+
+    Gli Account di Servizio Google gestiti da Google sono utilizzati principalmente per operazioni automatizzate da parte dei servizi di Google Cloud.
+        True
+
+    I ruoli "Owner" e "Editor" sono esempi di ruoli Predefiniti in Google Cloud.
+        True
+
+    Ogni progetto in Google Cloud deve avere un account di fatturazione associato, tranne se utilizza solo servizi gratuiti.
+        True
+
+    Le API di Google Cloud sono abilitate automaticamente quando un progetto viene creato.
+        False (Le API non sono abilitate automaticamente, ma devono essere attivate manualmente per ogni servizio che si desidera utilizzare.)
+
+Domande a Risposta Breve:
+
+    Cos'è la "principale di privilegio minimo" e perché è importante in Google Cloud?
+
+    La principale di privilegio minimo è una pratica di sicurezza che implica l'assegnazione ai utenti solo dei permessi strettamente necessari per eseguire il loro lavoro. È importante per ridurre i rischi di accesso non autorizzato e garantire che gli utenti non abbiano privilegi inutili che potrebbero compromettere la sicurezza.
+
+    Descrivi la differenza tra un "Billing Account Creator" e un "Billing Account Viewer".
+
+    Il Billing Account Creator può creare nuovi account di fatturazione, mentre il Billing Account Viewer può solo visualizzare i costi e le transazioni associati agli account di fatturazione, senza possibilità di modificarli.
+
+    Come puoi gestire i costi di un progetto in Google Cloud?
+
+    I costi di un progetto possono essere gestiti impostando budget e avvisi di spesa tramite il servizio di fatturazione. Si può anche monitorare l'uso delle risorse tramite i report di fatturazione e gli strumenti di monitoraggio forniti da Google Cloud.
+
+    Quali sono i due tipi principali di "Billing Accounts" in Google Cloud?
+
+    I due tipi principali di Billing Accounts sono: Self-serve (dove il pagamento avviene tramite carta di credito o addebito diretto) e Invoiced (dove vengono inviate fatture o estratti conto ai clienti, generalmente usato per le grandi aziende).
+
+    Come puoi esportare i dati di fatturazione in Google Cloud e per quali motivi potrebbe essere utile?
+
+    I dati di fatturazione possono essere esportati in BigQuery per l'analisi. Questo può essere utile per monitorare l'uso, fare analisi sui costi, o per motivi di conformità e audit.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
