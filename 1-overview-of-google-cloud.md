@@ -69,3 +69,117 @@ La scelta tra VMs, cluster gestiti o computing serverless, e tra diversi tipi di
 **Vantaggi dei servizi specializzati nel cloud**  
 - Accessibilità economica grazie alla condivisione dei costi tra più utenti.  
 - Democratizzazione di tecnologie avanzate per sviluppatori e aziende senza risorse interne per ricerca e sviluppo.
+
+
+
+
+_________________________°°°°°°°°°°°°°°°°°°°°°°°°°°°°°____________________________________________________________
+
+
+
+Ecco un test a scelta multipla basato sui contenuti finora discussi. Ogni domanda ha una sola risposta corretta.
+
+---
+
+### **Test: Cloud Computing e Servizi Associati**
+
+#### 1. Qual è una caratteristica distintiva dei servizi serverless?  
+a) Richiedono configurazione manuale di server o cluster.  
+b) Si adattano automaticamente al carico di lavoro senza intervento umano.  
+c) Sono utilizzabili solo con VMs preconfigurate.  
+d) Non supportano API per l'integrazione con altre applicazioni.  
+
+---
+
+#### 2. Quale dei seguenti è un tipo di peering offerto da Google Cloud?  
+a) Firewall Peering.  
+b) Direct Peering.  
+c) Cloud Identity Peering.  
+d) VM Networking Peering.  
+
+---
+
+#### 3. Per quale scenario è più adatto il **block storage**?  
+a) Archiviazione di grandi quantità di dati senza necessità di accesso al filesystem.  
+b) Creazione di dischi persistenti che continuano a esistere anche dopo lo spegnimento di una VM.  
+c) Accesso rapido ai dati per ridurre la latenza.  
+d) Conservazione di dati ridondanti su più regioni.  
+
+---
+
+#### 4. Cosa caratterizza i servizi specializzati come AutoML o Recommendations AI?  
+a) Sono configurabili solo tramite console di amministrazione.  
+b) Richiedono conoscenze avanzate di machine learning per essere utilizzati.  
+c) Sono serverless e accessibili tramite API.  
+d) Richiedono l'uso esclusivo di VPC privati.  
+
+---
+
+#### 5. Quale opzione è la migliore per ridurre la latenza di accesso ai dati?  
+a) Caches.  
+b) File storage.  
+c) Object storage.  
+d) Persistent block storage.  
+
+---
+
+#### 6. Quale dei seguenti servizi Google Cloud è serverless e progettato per rispondere ad eventi?  
+a) Cloud Filestore.  
+b) Cloud Functions.  
+c) Cloud Run.  
+d) App Engine.  
+
+---
+
+#### 7. Quale vantaggio offre l'object storage rispetto al block storage?  
+a) Accesso rapido ai dati tramite filesystem.  
+b) Scalabilità illimitata senza dipendenza dai dischi fisici.  
+c) Persistenza dei dati anche dopo lo spegnimento della VM.  
+d) Latenza sub-millisecond per operazioni di lettura/scrittura.  
+
+---
+
+#### 8. Quale strumento del cloud permette di gestire il traffico in entrata e in uscita per le subnet o le VMs?  
+a) Firewall rules.  
+b) Interconnects.  
+c) Load balancer.  
+d) Static IP settings.  
+
+---
+
+#### 9. Quale servizio Google Cloud è indicato per applicazioni di lunga durata come un backend di un sito web?  
+a) Cloud Functions.  
+b) Cloud Run.  
+c) App Engine.  
+d) Kubernetes Engine.  
+
+---
+
+#### 10. Qual è una sfida comune nell’uso delle cache?  
+a) La gestione della scalabilità dinamica.  
+b) Il costo elevato del filesystem associato.  
+c) La sincronizzazione tra la cache e il sistema di verità.  
+d) La necessità di ridondanza geografica per la disponibilità.  
+
+---
+
+### **Risposte corrette**
+1. b) Si adattano automaticamente al carico di lavoro senza intervento umano.  
+2. b) Direct Peering.  
+3. b) Creazione di dischi persistenti che continuano a esistere anche dopo lo spegnimento di una VM.  
+4. c) Sono serverless e accessibili tramite API.  
+5. a) Caches.  
+6. b) Cloud Functions.  
+7. b) Scalabilità illimitata senza dipendenza dai dischi fisici.  
+8. a) Firewall rules.  
+9. c) App Engine.  
+10. c) La sincronizzazione tra la cache e il sistema di verità.  
+
+
+
+
+
+
+
+
+
