@@ -50,5 +50,37 @@ Una volta creata la gerarchia delle risorse, è possibile definire le politiche 
 
 
 
+**Politiche dell'Organizzazione**  
+Google Cloud offre il servizio *Organization Policy Service*, che controlla l'accesso alle risorse di un'organizzazione. Questo servizio si integra con l'IAM (Identity and Access Management). Mentre IAM definisce chi può eseguire determinati compiti sulle risorse, il servizio delle politiche dell'organizzazione stabilisce *cosa* può essere fatto con tali risorse.
+
+**Vincoli sulle Risorse**  
+Le politiche dell'organizzazione si basano su *vincoli* imposti alle risorse. Google Cloud distingue tra vincoli di tipo *elenco* e *Booleani*. I vincoli di tipo elenco definiscono le opzioni consentite o negate per una risorsa (ad esempio, consentire o negare determinati valori). I vincoli booleani, invece, determinano se una condizione è vera o falsa e se il vincolo viene applicato o meno (ad esempio, disabilitare l'accesso alle porte seriali su VM).
+
+**Valutazione delle Politiche**  
+Le organizzazioni possono avere politiche permanenti per proteggere i dati e le risorse nel cloud. Ad esempio, può esserci una regola che limita chi può abilitare un'API o creare un account di servizio. Un approccio efficiente consiste nel definire politiche che limitano cosa può essere fatto e applicarle a oggetti nell'intera gerarchia delle risorse. Queste politiche vengono ereditate da tutti i livelli inferiori e non possono essere disattivate o sovrascritte, ma è possibile impedirne l'eredità impostando il parametro *inheritFromParent* su false.
+
+**Gestione dei Progetti**  
+Una delle prime attività quando si avvia una nuova iniziativa nel cloud è configurare un progetto. Questo può essere fatto tramite il Google Cloud Console. Dopo aver effettuato l'accesso, nella homepage della console è possibile creare e gestire i progetti, applicando le politiche appropriate alla gerarchia di risorse.
+
+
+![Screenshot 2024-11-28 alle 13 16 59](https://github.com/user-attachments/assets/08fc3287-de4e-41a0-9bb1-75a9b86a713a)
+
+![Screenshot 2024-11-28 alle 13 17 15](https://github.com/user-attachments/assets/8040b9de-61ab-46e7-851d-bc92a1b00ff6)
+
+![Screenshot 2024-11-28 alle 13 17 48](https://github.com/user-attachments/assets/ec1597ff-4fa9-4251-aa4c-0a41661fabe9)
+
+![Screenshot 2024-11-28 alle 13 18 05](https://github.com/user-attachments/assets/33acd9ba-f096-4554-a844-280f13ac59df)
+
+
+From there, you can click Create Project, which displays the New Project dialog box.
+Here, you can enter the name of a project and select an organization (Figure 3.8 and
+Figure 3.9).
+
+![Screenshot 2024-11-28 alle 13 19 18](https://github.com/user-attachments/assets/9a4fb01c-ecbc-4e6c-a47e-0442672d4828)
+
+
+
+
+
 
 
