@@ -44,7 +44,6 @@ In genere, i clienti combinano servizi di più categorie per soddisfare le propr
 La scelta tra VMs, cluster gestiti o computing serverless, e tra diversi tipi di storage, dipende dalle esigenze di scalabilità, personalizzazione e costi.
 
 
-### Riassunto sintetico in italiano
 
 **Networking nel cloud**  
 - **Indirizzi IP:** Ogni dispositivo o servizio nel cloud necessita di un IP. Esistono:  
