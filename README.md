@@ -16,4 +16,8 @@
 12- Deploying storage in google cloud
 13- Loading Data into storage 
 14- Networking in the cloud : virtual private clouds and virtual private networks
+15- Networking in the Cloud: DNS, Load Balancing,Google Private Access, and IP Addressing
+16- Deploying Applications with Cloud Marketplace and Cloud Foundation Toolkit
+17- Configuring Access and Security
+18- Monitoring, Logging, and Cost Estimating
 </pre>
