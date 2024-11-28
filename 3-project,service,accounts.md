@@ -78,6 +78,61 @@ Figure 3.9).
 
 ![Screenshot 2024-11-28 alle 13 19 18](https://github.com/user-attachments/assets/9a4fb01c-ecbc-4e6c-a47e-0442672d4828)
 
+__
+
+**Ruoli e Identità in Google Cloud**
+
+Oltre a gestire le risorse, come ingegnere del cloud, sarà necessario gestire anche l'accesso a queste risorse, utilizzando ruoli e identità.
+
+**Ruoli in Google Cloud**  
+Un *ruolo* è una raccolta di permessi, che vengono assegnati agli utenti tramite il binding di un utente a un ruolo. Le *identità* sono gli oggetti che rappresentano un utente umano o un account di servizio in Google Cloud. Ad esempio, Alice è una sviluppatrice di software con l'identità *alice@example.com*. I ruoli sono assegnati a questa identità, così Alice può creare, modificare, eliminare e utilizzare risorse in Google Cloud.
+
+Esistono tre tipi di ruoli in Google Cloud:
+1. **Ruoli di base**: in precedenza chiamati ruoli primitivi, includono Owner, Editor e Viewer, che forniscono privilegi ampi e applicabili a molte risorse. È consigliabile usare ruoli predefiniti invece di quelli di base, poiché i ruoli di base concedono permessi troppo ampi che potrebbero non essere necessari per l'utente.
+2. **Ruoli predefiniti**: offrono un accesso granulare alle risorse specifiche di Google Cloud, gestiti e aggiornati da Google. Ad esempio, in App Engine ci sono:
+   - *appengine.appAdmin*: consente di leggere, scrivere e modificare tutte le impostazioni dell'applicazione.
+   - *appengine.ServiceAdmin*: consente accesso in sola lettura alle impostazioni dell'app e in scrittura a livello di modulo e versione.
+   - *appengine.appViewer*: consente solo la lettura delle applicazioni.
+3. **Ruoli personalizzati**: permettono agli amministratori del cloud di creare e gestire i propri ruoli, selezionando i permessi definiti in IAM. Tuttavia, alcuni permessi, come *iam.ServiceAccounts.getAccessToken*, non sono disponibili nei ruoli personalizzati.
+
+**Assegnazione dei Ruoli alle Identità**  
+Una volta determinati i ruoli da assegnare agli utenti, è possibile farlo tramite la console IAM. È importante sapere che i permessi non possono essere assegnati direttamente agli utenti, ma solo ai ruoli, che vengono poi assegnati agli utenti. Dalla console IAM, è possibile selezionare un progetto e visualizzare l'interfaccia di gestione dei permessi. Si può quindi selezionare l'opzione "Aggiungi" per inserire i nomi utente e i ruoli associati.
+
+![Screenshot 2024-11-28 alle 13 22 59](https://github.com/user-attachments/assets/bae55ed8-4d30-48fb-994d-32af098af955)
+
+![Screenshot 2024-11-28 alle 13 23 20](https://github.com/user-attachments/assets/e50d0e15-045c-4929-8ab6-d2f5a333d994)
+![Screenshot 2024-11-28 alle 13 23 41](https://github.com/user-attachments/assets/e91fe261-3365-4b02-9b40-c22c326b9626)
+
+
+
+**Account di Servizio**  
+
+Gli account di servizio sono utilizzati quando le applicazioni o le macchine virtuali (VM) devono eseguire operazioni a nome di un utente o per svolgere attività per le quali l'utente non ha i permessi necessari. Ad esempio, un'applicazione potrebbe necessitare di accedere a un database senza consentire agli utenti dell'applicazione di farlo direttamente. In questo caso, si crea un account di servizio con accesso al database e si assegna a quell'applicazione, permettendo all'applicazione di eseguire query a nome degli utenti senza dover dare loro accesso diretto al database.
+
+Gli account di servizio sono particolari perché possono essere trattati sia come risorse sia come identità. Quando si assegna un ruolo a un account di servizio, lo si considera come un'identità. Quando si concedono permessi a un utente per accedere a un account di servizio, lo si considera come una risorsa.
+
+Esistono due tipi di account di servizio:
+1. **Account di servizio gestiti dall'utente**: gli utenti possono creare fino a 100 account di servizio per progetto. Quando si crea un progetto con l'API Compute Engine abilitata, viene creato automaticamente un account di servizio per Compute Engine. Allo stesso modo, se si ha un'applicazione App Engine, Google Cloud creerà automaticamente un account di servizio per App Engine. Questi account vengono automaticamente dotati di ruoli di editor nei progetti in cui sono creati. È anche possibile creare account di servizio personalizzati nei progetti.
+2. **Account di servizio gestiti da Google**: Google crea e gestisce account di servizio utilizzati per vari servizi di Google Cloud.
+
+Gli account di servizio possono essere gestiti a livello di progetto o a livello di singolo account di servizio. Ad esempio, se si concede il permesso `iam.serviceAccountUser` a un utente per un progetto specifico, quell'utente avrà la possibilità di gestire tutti gli account di servizio nel progetto. Se si preferisce limitare la gestione a determinati account, si può assegnare `iam.serviceAccountUser` a un singolo account di servizio.
+
+Gli account di servizio vengono creati automaticamente quando vengono creati determinate risorse. Ad esempio, verrà creato un account di servizio per una VM quando questa viene creata. Se si desidera creare un account di servizio per un'applicazione specifica, si può fare tramite la console IAM & Admin, selezionando "Account di servizio" e poi cliccando su "Crea account di servizio".
+
+![Screenshot 2024-11-28 alle 13 24 48](https://github.com/user-attachments/assets/23ac685c-7451-4f25-a91a-5149ff13bb28)
+
+______________________________
+
+
+
+
+Billing
+
+
+
+
+
+
 
 
 
