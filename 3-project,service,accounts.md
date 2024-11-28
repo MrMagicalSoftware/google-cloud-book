@@ -126,15 +126,80 @@ ______________________________
 
 
 
-Billing
+**Fatturazione**
+
+L'uso di risorse come VM, archiviazione di oggetti e servizi specializzati comporta generalmente dei costi. L'API di fatturazione di Google Cloud fornisce un modo per gestire come vengono pagate le risorse utilizzate.
+
+**Account di Fatturazione**
+
+Gli account di fatturazione contengono informazioni su come pagare le spese per le risorse utilizzate. Ogni account di fatturazione può essere associato a uno o più progetti, e ogni progetto deve avere un account di fatturazione, a meno che non utilizzi solo servizi gratuiti.
+
+La struttura degli account di fatturazione può essere simile a quella della gerarchia delle risorse. Ad esempio, in una piccola azienda potrebbe esserci un solo account di fatturazione, con tutti i costi delle risorse caricati su quello. In un'organizzazione più grande, come quella descritta nel capitolo (con dipartimenti come finanza, marketing, legale e sviluppo software), si potrebbero avere account di fatturazione separati per ogni dipartimento, se i costi sono gestiti separatamente. Ad esempio, finanza, marketing e legale potrebbero usare lo stesso account di fatturazione, mentre lo sviluppo software potrebbe utilizzare un account diverso se i suoi costi sono gestiti separatamente.
+
+Nella console di Google Cloud, si può navigare alla sezione "Fatturazione" per visualizzare gli account di fatturazione esistenti e crearne di nuovi. Nella pagina di panoramica della fatturazione, è possibile visualizzare e modificare i progetti collegati agli account di fatturazione.
+
+Esistono due tipi di account di fatturazione:
+1. **Account di fatturazione self-serve**: pagati tramite carta di credito o addebito diretto su un conto bancario, con i costi addebitati automaticamente.
+2. **Account di fatturazione con fatturazione a fattura**: in cui le fatture vengono inviate al cliente, spesso utilizzati da aziende e grandi clienti.
+
+![Screenshot 2024-11-28 alle 13 48 39](https://github.com/user-attachments/assets/f20ff9e3-5a40-465f-b6b3-e4ea4dd9e324)
+
+**Ruoli associati alla Fatturazione**
+
+Ci sono diversi ruoli relativi alla gestione della fatturazione in Google Cloud. Conoscere questi ruoli è importante per l'esame. I principali ruoli di fatturazione sono:
+
+1. **Billing Account Creator**: consente di creare nuovi account di fatturazione self-service.
+2. **Billing Account Administrator**: gestisce gli account di fatturazione, ma non può crearli.
+3. **Billing Account User**: consente a un utente di collegare i progetti agli account di fatturazione.
+4. **Billing Account Viewer**: consente a un utente di visualizzare i costi e le transazioni dell'account di fatturazione.
+
+Di solito, pochi utenti avranno il ruolo di **Billing Account Creator**, e coloro che lo avranno probabilmente ricopriranno un ruolo finanziario nell'organizzazione. Gli amministratori cloud potrebbero avere il ruolo di **Billing Account Administrator** per gestire gli account. Chiunque possa creare un progetto dovrebbe avere il ruolo di **Billing Account User** per collegare i nuovi progetti all'account di fatturazione appropriato. **Billing Account Viewer** è utile per alcune persone, come un revisore dei conti, che deve poter leggere le informazioni dell'account di fatturazione senza modificarle.
+
+![Screenshot 2024-11-28 alle 13 49 56](https://github.com/user-attachments/assets/b617b11b-1609-4fc0-870b-c2dadb4d731c)
 
 
+**Budget di Fatturazione e Avvisi**
+
+Il servizio di fatturazione di Google Cloud offre la possibilità di definire un budget e impostare avvisi di fatturazione. Per accedere al modulo del budget, vai dal menu principale della console, seleziona **Billing** e poi **Budgets & Alerts**.
+
+Nel modulo del budget, puoi assegnare un nome al budget e specificare un account di fatturazione da monitorare. È importante notare che il budget è associato a un account di fatturazione, non a un progetto. Poiché un account di fatturazione può essere collegato a più progetti, il budget e gli avvisi dovrebbero riflettere la spesa prevista per tutti i progetti associati a quell'account.
+
+Puoi definire un importo specifico o basare il budget sull'importo speso nel mese precedente. Inoltre, puoi impostare più soglie di avviso per il budget. Di default, ci sono tre soglie preimpostate: 50%, 90% e 100%. Queste percentuali possono essere modificate in base alle tue esigenze. Se desideri più di tre avvisi, puoi aggiungere nuove soglie cliccando su **Add Item** nella sezione **Set Budget Alerts**.
+
+Quando una delle soglie di percentuale del budget viene raggiunta, gli amministratori di fatturazione e gli utenti dell'account di fatturazione riceveranno una notifica via email. Inoltre, se desideri rispondere agli avvisi in modo programmato, puoi configurare l'invio delle notifiche a un topic Pub/Sub selezionando la casella appropriata nella sezione **Manage Notification**.
+
+![Screenshot 2024-11-28 alle 13 51 13](https://github.com/user-attachments/assets/53ed0583-a0d9-469c-a0dd-fe984121cb76)
 
 
+**Esportazione dei Dati di Fatturazione**
+
+I dati di fatturazione possono essere esportati per analisi future o per motivi di conformità. Google Cloud offre la possibilità di esportare i dati di fatturazione su **BigQuery**.
+
+Per esportare i dati su BigQuery, naviga nella sezione **Billing** della console e seleziona **Billing Export** dal menu. Nella schermata che appare, puoi scegliere l'account di fatturazione da esportare.
+
+In passato, era possibile esportare i dati di fatturazione in un file archiviato su **Cloud Storage**, ma questa opzione non è più supportata. Sebbene sia ancora presente un'opzione **File Export**, questa non è più funzionante, come mostrato nell'immagine di esempio. Quando leggerai questo, è probabile che l'opzione di esportazione tramite file sia stata rimossa.
+
+Se dovessi esportare i dati in un file, dovresti specificare un nome del bucket e un prefisso per il report. Le opzioni di formato file disponibili sono **CSV** e **JSON**, che potrebbero essere oggetto di domande nell'esame. Ricorda queste due opzioni per eventuali domande future.
+![Screenshot 2024-11-28 alle 13 52 52](https://github.com/user-attachments/assets/e4119673-9dea-498c-a1c4-93085774f96c)
 
 
+![Screenshot 2024-11-28 alle 13 53 13](https://github.com/user-attachments/assets/bb7155bf-59d6-4bdd-9ded-240bd571625b)
 
 
+__
+**Abilitare le API**
+
+Google Cloud utilizza le API per rendere i servizi accessibili in modo programmatico. Ad esempio, quando utilizzi un modulo per creare una macchina virtuale (VM) o un bucket di Cloud Storage, dietro le quinte vengono eseguite funzioni API per creare la VM o il bucket. Ogni servizio di Google Cloud ha un'API associata, ma la maggior parte di esse non è abilitata di default in un progetto.
+
+Per abilitare le API dei servizi, puoi selezionare **APIs & Services** dal menu principale della console. Questo ti mostrerà una dashboard, come indicato nella Figura 3.20. 
+
+Cliccando sul link **Enable APIs and Services**, vedrai un elenco di servizi che puoi abilitare, come mostrato nella Figura 3.21. Questa schermata è un modo comodo per abilitare le API che sai di dover utilizzare. Se provi a eseguire un'operazione che richiede un'API non abilitata, ti verrà chiesto se desideri abilitare l'API.
+
+Le API abilitate avranno un'opzione per disabilitarle. Puoi cliccare su questa opzione per disabilitare l'API. Inoltre, puoi cliccare sul nome di un'API nell'elenco per visualizzare i dettagli sull'utilizzo di quell'API.
+
+![Screenshot 2024-11-28 alle 13 54 41](https://github.com/user-attachments/assets/70e5e856-b9ac-4f30-a343-d033a5a7ff66)
+
+![Screenshot 2024-11-28 alle 13 54 59](https://github.com/user-attachments/assets/f3aac9e5-531e-4c20-9efd-1fecb2fc3274)
 
 
 
