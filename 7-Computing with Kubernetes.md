@@ -102,5 +102,76 @@ I cluster sono configurati per default con un **Release Channel**, che abilita l
 ---
 
 
+______________________________
+
+
+
+Ecco il test riscritto con le risposte distribuite in modo casuale:
+
+### Domande
+
+1. **Che cos'è Google Kubernetes Engine (GKE)?**
+   - A) Un sistema di gestione dei database
+   - B) Un servizio che consente di gestire e distribuire cluster Kubernetes su Google Cloud
+   - C) Un servizio di gestione dei dati su Google Cloud
+   - D) Un sistema di virtualizzazione delle macchine
+
+2. **Qual è la principale differenza tra la modalità standard e la modalità autopilot in GKE?**
+   - A) In modalità autopilot, GKE gestisce l'infrastruttura e i nodi, mentre in modalità standard l'utente gestisce l'infrastruttura e le risorse del nodo.
+   - B) In modalità standard, GKE gestisce l'infrastruttura, mentre in modalità autopilot l'utente deve gestirla.
+   - C) In entrambe le modalità, GKE gestisce completamente l'infrastruttura.
+   - D) La modalità standard è più sicura della modalità autopilot.
+
+3. **Cosa succede se si crea un cluster privato in GKE?**
+   - A) Il traffico tra il piano di controllo e i nodi avverrà tramite indirizzi privati.
+   - B) I nodi del cluster avranno indirizzi IP pubblici.
+   - C) Non è possibile configurare un cluster privato in GKE.
+   - D) Il cluster avrà un accesso pubblico limitato.
+
+4. **Cosa fa la funzionalità "Authorized Networks" quando viene abilitata in GKE?**
+   - A) Blocco il traffico tra i nodi del cluster.
+   - B) Limita l'accesso al piano di controllo del cluster solo alle reti di Google Cloud.
+   - C) Permette solo gli utenti con un account Google a connettersi al cluster.
+   - D) Aumenta la disponibilità del cluster in più regioni.
+
+5. **Cosa è possibile configurare durante la creazione di un cluster in modalità autopilot?**
+   - A) Il numero di nodi che compongono il cluster.
+   - B) La regione e la configurazione della rete per il cluster.
+   - C) Le risorse del nodo, poiché GKE gestisce tutto.
+   - D) Nessuna delle precedenti.
+
+6. **Cos'è un "Release Channel" in GKE?**
+   - A) Un canale per l'accesso a software aggiuntivo su GKE.
+   - B) Una configurazione che consente agli utenti di bypassare gli aggiornamenti di GKE.
+   - C) Un sistema di aggiornamento automatico del cluster.
+   - D) Una funzione che consente agli utenti di accedere a versioni sperimentali di Kubernetes.
+
+### Risposte corrette
+
+1. **B**: Google Kubernetes Engine è un servizio che consente di gestire e distribuire cluster Kubernetes su Google Cloud.
+2. **A**: In modalità autopilot, GKE gestisce l'infrastruttura e i nodi, mentre in modalità standard l'utente gestisce l'infrastruttura e le risorse del nodo.
+3. **A**: In un cluster privato, il traffico tra il piano di controllo e i nodi avviene tramite indirizzi privati.
+4. **B**: "Authorized Networks" limita l'accesso al piano di controllo del cluster solo alle reti di Google Cloud.
+5. **B**: In modalità autopilot, è possibile configurare la regione e la rete, ma GKE gestisce le risorse del nodo.
+6. **C**: Un "Release Channel" è un sistema di aggiornamento automatico del cluster.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
