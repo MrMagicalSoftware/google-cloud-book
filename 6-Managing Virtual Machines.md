@@ -99,10 +99,245 @@ L'integrazione delle GPU nelle VM consente di affrontare carichi di lavoro compl
 
 
 
-
-
-
-
-
-
 _____________________________________
+
+
+### **Gestione degli Snapshots**  
+
+Gli snapshots sono copie dei dati presenti su un disco persistente, utili per salvare lo stato del disco e ripristinarlo successivamente. Consentono di creare dischi persistenti con dati identici o di effettuare backup, permettendo il recupero dello stato del disco in un momento specifico.  
+
+#### **Creazione e Aggiornamento degli Snapshots**  
+- **Primo snapshot**: Viene effettuata una copia completa dei dati sul disco persistente.  
+- **Snapshot successivi**: Solo i dati modificati rispetto all’ultimo snapshot vengono copiati, ottimizzando l'uso dello spazio di archiviazione.  
+
+> **Nota importante**: Per evitare perdita di dati memorizzati in memoria, è necessario svuotare i buffer del disco prima di creare uno snapshot. Ad esempio, in MySQL si utilizza il comando `FLUSH`.  
+
+#### **Ruoli e Permessi**  
+Per gestire gli snapshots, è richiesto il ruolo di **Compute Storage Admin**. Per assegnare questo ruolo:  
+1. Accedere alla pagina **Identity Access Management (IAM)**.  
+2. Selezionare **Roles** e specificare l'indirizzo email dell'utente a cui assegnare il ruolo.  
+
+#### **Creazione di uno Snapshot nella Cloud Console**  
+1. Accedere alla sezione **Compute Engine** e selezionare **Snapshots** nel pannello di sinistra.  
+2. Fare clic su **Create Snapshot** per aprire il modulo di configurazione.  
+3. Specificare:  
+   - **Nome**: Nome univoco per identificare lo snapshot.  
+   - **Descrizione**: Dettaglio opzionale per descrivere lo snapshot.  
+   - **Etichette**: Utile per una gestione ordinata. Le etichette possono indicare il tipo di dati e l’applicazione che utilizza i dati.  
+4. Scegliere la **regione di archiviazione**:  
+   - **Regionale**: Archiviazione limitata a una specifica regione.  
+   - **Multiregionale**: Archiviazione distribuita su più regioni per maggiore resilienza.  
+
+L'uso degli snapshots consente di garantire continuità operativa e protezione dei dati, mantenendo al contempo un controllo efficiente dello spazio di archiviazione.
+
+
+
+___
+
+
+### **Gestione delle Immagini in Google Cloud**  
+
+Le immagini sono copie complete del contenuto di un disco, utilizzate per creare VM. Sebbene simili agli snapshots, differiscono per scopo e metodo di archiviazione:  
+- **Snapshots**: Backup incrementali, utilizzati per ripristinare o duplicare dati su un disco.  
+- **Immagini**: Backup completi, utilizzati per creare nuove VM.  
+È possibile creare una VM anche da uno snapshot, ma solo se proviene da un disco di avvio (boot disk).  
+
+<img width="653" alt="Screenshot 2024-12-02 alle 08 14 55" src="https://github.com/user-attachments/assets/0a29996d-a4fb-4825-af4f-1a3a5271be5a">
+<img width="583" alt="Screenshot 2024-12-02 alle 08 15 15" src="https://github.com/user-attachments/assets/6e491649-f30d-4b24-a8a7-18d55b761e90">
+
+
+
+#### **Fonti per la Creazione delle Immagini**  
+Le immagini possono essere create a partire da:  
+- **Dischi persistenti**  
+- **Snapshots**  
+- **Altre immagini**  
+- **File in Cloud Storage**  
+- **Dischi virtuali**  
+
+#### **Creazione di un’Immagine**  
+1. Accedere alla pagina **Compute Engine** nella Cloud Console.  
+2. Selezionare **Images** per visualizzare la lista delle immagini disponibili.  
+3. Fare clic su **Create Image** per aprire il modulo di configurazione.  
+4. Configurare:  
+   - **Nome**: Identificativo univoco per l’immagine.  
+   - **Descrizione**: Opzionale, per fornire dettagli sull'immagine.  
+   - **Etichette**: Utili per gestire immagini in modo organizzato.  
+   - **Famiglia**: Attributo opzionale per raggruppare immagini. La più recente e non deprecata verrà usata come predefinita.  
+
+#### **Selezione della Fonte**  
+- **Immagine esistente**: È possibile scegliere immagini dal progetto corrente o da altri progetti.  
+- **File in Cloud Storage**: Si può esplorare il bucket di archiviazione per selezionare un file come fonte.  
+
+#### **Gestione delle Immagini**  
+- **Eliminazione**: Rimuove completamente l'immagine.  
+- **Deprecazione**: Segnala che l'immagine non è più supportata, permettendo di specificare un’immagine di sostituzione. Le immagini deprecate restano disponibili, ma non vengono aggiornate per patch di sicurezza o miglioramenti.  
+- **Creazione di una VM**: Dopo aver creato un’immagine, è possibile usarla per creare una VM selezionando **Create Instance** nella barra dei comandi sopra la lista delle immagini.  
+
+La gestione delle immagini garantisce flessibilità per il provisioning di VM e una facile transizione a versioni più recenti, riducendo i rischi associati a immagini obsolete.
+
+
+___
+
+
+
+### **Introduzione ai Gruppi di Istanze (Instance Groups)**
+
+I **gruppi di istanze** sono insiemi di VM gestite come un’unica entità. Ogni comando **gcloud** o console applicato a un gruppo di istanze viene applicato a tutte le istanze del gruppo. Google offre due tipi di gruppi di istanze: **gestiti** e **non gestiti**.
+
+<img width="611" alt="Screenshot 2024-12-02 alle 08 17 29" src="https://github.com/user-attachments/assets/f80ff5d8-1aa8-42bb-9c0c-1d2091761ad5">
+
+
+
+
+- **Gruppi gestiti**: Composti da VM identiche. Questi gruppi sono creati utilizzando un **modello di istanza** che specifica la configurazione della VM, come il tipo di macchina, l'immagine del disco di avvio, la zona, le etichette e altre proprietà. I gruppi gestiti possono scalare automaticamente il numero di istanze al loro interno e essere usati con il bilanciamento del carico per distribuire i carichi di lavoro. Se un'istanza si guasta, viene ricreata automaticamente. I gruppi gestiti sono la tipologia preferita.
+  
+- **Gruppi non gestiti**: Utilizzati quando è necessario lavorare con configurazioni differenti all’interno delle istanze del gruppo. Non supportano l'autoscaling o il bilanciamento del carico, quindi sono meno flessibili rispetto ai gruppi gestiti.
+
+### **Creazione e Rimozione di Gruppi di Istanze e Modelli**
+
+1. **Creazione di un Gruppo di Istanze**:  
+   Per creare un gruppo di istanze, è necessario prima creare un **modello di istanza**.  
+   Il comando per creare un modello di istanza è:
+   ```bash
+   gcloud compute instance-templates create INSTANCE
+   ```
+   È possibile specificare una VM esistente come sorgente del modello di istanza usando il parametro `--source-instance`:
+   ```bash
+   gcloud compute instance-templates create instance-template-1 --source-instance=instance-1
+   ```
+   I modelli di istanza possono anche essere creati dalla console, utilizzando la **pagina dei modelli di gruppo di istanze**.
+
+2. **Gruppi Zonal e Regionali**:  
+   I gruppi di istanze possono contenere istanze in una singola zona (**gruppo gestito zonale**) o distribuite su più zone (**gruppo gestito regionale**). I gruppi regionali sono consigliati perché distribuiscono il carico di lavoro su più zone, aumentando la resilienza.  
+   È possibile specificare una **politica di distribuzione**:
+   - **Distribuzione uniforme**: Distribuisce le istanze in modo uniforme tra le zone.
+   - **Distribuzione bilanciata**: Distribuisce le istanze il più uniformemente possibile, tenendo conto delle risorse disponibili.
+   - **Distribuzione qualsiasi**: Distribuisce le istanze tra le zone in base alla disponibilità e alle riserve.
+
+3. **Rimozione di Modelli e Gruppi di Istanze**:  
+   - **Rimuovere un modello di istanza**:  
+     Per eliminare un modello di istanza, selezionarlo dalla pagina dei modelli di gruppo di istanze e fare clic sull'icona di eliminazione.  
+     È possibile eliminare un modello anche con il comando:
+     ```bash
+     gcloud compute instance-templates delete INSTANCE-TEMPLATE-NAME
+     ```
+   - **Elencare modelli e gruppi di istanze**:  
+     Per visualizzare i modelli di istanza e i gruppi di istanze, si usano i seguenti comandi:
+     ```bash
+     gcloud compute instance-templates list
+     gcloud compute instance-groups managed list-instances
+     ```
+
+### **Considerazioni Finali NOTE **
+I **gruppi gestiti** sono la scelta migliore per la gestione di VM in un ambiente scalabile e resiliente, grazie alla capacità di ridimensionarsi automaticamente e di riprendersi dai guasti. I **gruppi non gestiti** sono più adatti per casi in cui le VM richiedono configurazioni diverse, ma non beneficiano delle funzionalità avanzate come il bilanciamento del carico e l'autoscaling.
+
+
+Ecco alcune domande a risposta multipla sul capitolo riguardante la gestione delle istanze e dei gruppi di istanze:
+
+---
+
+**1. Cosa sono i gruppi di istanze gestiti?**
+
+a) Gruppi di VM con configurazioni differenti tra loro.  
+b) Gruppi di VM identiche create usando un modello di istanza.  
+c) Gruppi di VM che non supportano il bilanciamento del carico.  
+d) Gruppi di VM che non possono scalare automaticamente.
+
+---
+
+**2. Qual è la differenza principale tra immagini e snapshot?**
+
+a) Gli snapshot offrono backup incrementali, mentre le immagini sono backup completi.  
+b) Le immagini offrono backup incrementali, mentre gli snapshot sono backup completi.  
+c) Gli snapshot vengono utilizzati per creare VM, mentre le immagini vengono utilizzate per salvare dati su disco.  
+d) Le immagini non possono essere utilizzate per creare VM, ma solo per ripristinare dischi.
+
+---
+
+**3. Quali dei seguenti strumenti si possono utilizzare per gestire le istanze su Google Cloud?**
+
+a) Cloud Console.  
+b) Cloud Shell.  
+c) Cloud SDK (gcloud).  
+d) Tutte le precedenti.
+
+---
+
+**4. Come si può creare un modello di istanza per un gruppo di istanze gestite?**
+
+a) Utilizzando la Cloud Console e selezionando "Crea modello di istanza".  
+b) Eseguendo il comando `gcloud compute instance-templates create`.  
+c) Creando un'immagine da un'istanza esistente.  
+d) Nessuna delle risposte precedenti.
+
+---
+
+**5. Cosa accade se un'istanza in un gruppo di istanze gestito si guasta?**
+
+a) Il gruppo non reagisce al guasto dell'istanza.  
+b) L'istanza viene ricreata automaticamente dal sistema.  
+c) L'istanza viene eliminata permanentemente.  
+d) Il carico di lavoro viene trasferito manualmente a un'altra istanza.
+
+---
+
+**6. Qual è il comando per elencare tutti i modelli di istanza in Google Cloud?**
+
+a) `gcloud compute instance-groups list`  
+b) `gcloud compute instance-templates list`  
+c) `gcloud compute instance-groups managed list-instances`  
+d) `gcloud compute list-templates`
+
+---
+
+**7. Quale delle seguenti affermazioni è vera riguardo i gruppi di istanze regionali?**
+
+a) I gruppi regionali distribuiscono le VM solo su una zona.  
+b) I gruppi regionali non sono raccomandati per aumentare la resilienza.  
+c) I gruppi regionali distribuiscono automaticamente le istanze su più zone per aumentare la resilienza.  
+d) I gruppi regionali possono essere utilizzati solo con un numero specifico di zone.
+
+---
+
+**8. Come si può creare un'immagine di un'istanza in Google Cloud?**
+
+a) Usando il comando `gcloud compute images create`.  
+b) Selezionando l'istanza dalla Cloud Console e cliccando "Crea immagine".  
+c) Creando un'istanza e selezionando "Crea immagine" dal menu delle opzioni.  
+d) Tutte le risposte precedenti.
+
+---
+
+**9. Quale tipo di distribuzione di istanze consente di distribuire istanze in modo uniforme tra le zone?**
+
+a) Distribuzione qualsiasi.  
+b) Distribuzione bilanciata.  
+c) Distribuzione uniforme.  
+d) Nessuna delle risposte precedenti.
+
+---
+
+**10. Quando è consigliato utilizzare i gruppi di istanze non gestiti?**
+
+a) Quando si desidera che tutte le VM nel gruppo siano identiche.  
+b) Quando si vogliono configurazioni differenti tra le istanze del gruppo.  
+c) Quando si desidera scalare automaticamente le istanze.  
+d) Quando si usa il bilanciamento del carico.
+
+---
+
+**Risposte corrette**:
+
+1. b) Gruppi di VM identiche create usando un modello di istanza.  
+2. a) Gli snapshot offrono backup incrementali, mentre le immagini sono backup completi.  
+3. d) Tutte le precedenti.  
+4. b) Eseguendo il comando `gcloud compute instance-templates create`.  
+5. b) L'istanza viene ricreata automaticamente dal sistema.  
+6. b) `gcloud compute instance-templates list`.  
+7. c) I gruppi regionali distribuiscono automaticamente le istanze su più zone per aumentare la resilienza.  
+8. d) Tutte le risposte precedenti.  
+9. c) Distribuzione uniforme.  
+10. b) Quando si vogliono configurazioni differenti tra le istanze del gruppo.
+
+
